@@ -1,0 +1,17 @@
+import textwrap
+import google.generativeai as genai
+genai.configure(api_key="AIzaSyBUB5dX-0Oct2nw7r4lFw4kjcRQm7VwlEQ")
+model = genai.GenerativeModel("gemini-2.5-flash")
+product = input("Enter product: ")
+audience = input("Enter target audience: ")
+price = input("Enter price: ")
+prompt = f"""
+Create a catchy advertisement.
+Product: {product}
+Target audience: {audience}
+Price: {price}
+Make it attractive and persuasive with a call to action.
+"""
+response = model.generate_content(prompt)
+print("\nAdvertisement:\n", textwrap.fill(response.text,width=80))
+print("\nAdvertisement:\n", textwrap.fill(response.text,width=80))
