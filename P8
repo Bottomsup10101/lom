@@ -1,0 +1,6 @@
+text = input("Enter text: ")
+word_count = len(text.split())
+char_count = len(text)
+print("Character Count:", char_count)
+print("\nWord Count:", word_count)
+print("Character Count:", char_count)
