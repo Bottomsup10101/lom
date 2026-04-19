@@ -1,0 +1,15 @@
+!pip install gensim
+from gensim.models import Word2Vec
+# Sample data
+sentences = [
+["I", "love", "NLP"],
+["NLP", "is", "fun"],
+["I", "enjoy", "learning"]
+]
+# Train Word2Vec model
+model = Word2Vec(sentences, vector_size=50, window=3, min_count=1)
+# Similarity check
+sim1 = model.wv.similarity("NLP", "learning")
+sim2 = model.wv.similarity("love", "enjoy")
+print("Similarity (NLP, learning):", sim1)
+print("Similarity (love, enjoy):", sim2)
