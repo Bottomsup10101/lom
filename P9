@@ -1,0 +1,8 @@
+import textwrap
+import google.generativeai as genai
+genai.configure(api_key="AIzaSyBUB5dX-0Oct2nw7r4lFw4kjcRQm7VwlEQ")
+model = genai.GenerativeModel("gemini-2.5-flash")
+text = input("Enter sentence: ")
+prompt = f"Paraphrase this sentence:\n{text}"
+response = model.generate_content(prompt)
+print("\nParaphrased Sentence:\n", response.text)
