@@ -1,0 +1,36 @@
+import nltk
+import string
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+nltk.download('stopwords')
+# Input text
+text = "Natural Language Processing is very interesting and useful!"
+# 1. Lowercase
+text = text.lower()
+# 2. Remove punctuation
+text = text.translate(str.maketrans(''
+,
+'', string.punctuation))
+# 3. Tokenization
+words = text.split()
+# 4. Stopword removal
+stop_words = set(stopwords.words('english'))
+words = [w for w in words if w not in stop_words]
+# 5. Stemming
+ps = PorterStemmer()
+words = [ps.stem(w) for w in words]
+print("Processed Words:", words)
+# 👉 IMPORTANT: Join for better feature extraction
+processed_text = " ".join(words)
+# 6. Bag of Words
+cv = CountVectorizer()
+bow = cv.fit_transform([processed_text])
+print("\nBoW Words:", cv.get_feature_names_out())
+print("BoW Matrix:", bow.toarray())
+# 7. TF-IDF
+tfidf = TfidfVectorizer()
+tfidf_result = tfidf.fit_transform([processed_text])
+print("\nTF-IDF Words:", tfidf.get_feature_names_out())
+print("TF-IDF Matrix:", tfidf_result.toarray())
+print("TF-IDF Matrix:", tfidf_result.toarray())
