@@ -1,0 +1,8 @@
+import textwrap
+import google.generativeai as genai
+genai.configure(api_key="AIzaSyBEvngDgXh1QbipYoALoln2HptbL13ody8")
+model = genai.GenerativeModel("gemini-2.5-flash")
+text = input("Enter text: ")
+prompt = f"Classify sentiment as Positive, Negative, or Neutral:\n{text}"
+response = model.generate_content(prompt)
+print("\nSentiment:", textwrap.fill(response.text))
