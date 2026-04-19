@@ -1,0 +1,8 @@
+import textwrap
+import google.generativeai as genai
+genai.configure(api_key="AIzaSyBUB5dX-0Oct2nw7r4lFw4kjcRQm7VwlEQ")
+model = genai.GenerativeModel("gemini-2.5-flash")
+text = input("Enter English text: ")
+prompt = f"Translate this to Hindi:\n{text}"
+response = model.generate_content(prompt)
+print("\nHindi Translation:\n", textwrap.fill(response.text))
