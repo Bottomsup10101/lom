@@ -1,0 +1,8 @@
+import textwrap
+import google.generativeai as genai
+genai.configure(api_key="AIzaSyBEvngDgXh1QbipYoALoln2HptbL13ody8")
+model = genai.GenerativeModel("gemini-2.5-flash")
+text = input("Enter paragraph: ")
+prompt = f"Summarize this in 2-3 lines:\n{text}"
+response = model.generate_content(prompt)
+print("\nSummary:\n", textwrap.fill(response.text, width=80))
